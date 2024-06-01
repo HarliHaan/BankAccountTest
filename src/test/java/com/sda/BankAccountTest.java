@@ -22,16 +22,19 @@ class BankAccountTest {
     @Test
     void testDeposit(){
         Assertions.assertTrue(account.deposit(500));
+        Assertions.assertFalse(account.deposit(-20));
         assertEquals(1500, account.getBalance());
     }
     @Test
     void testWithdraw(){
         Assertions.assertTrue(account.withdraw(500));
+        Assertions.assertFalse(account.withdraw(1100));
         assertEquals(500, account.getBalance());
     }
     @Test
     void testTransfer(){
         Assertions.assertTrue(account.transfer(500, account2));
+        Assertions.assertFalse(account.transfer(1100, account2));
         assertEquals(500, account.getBalance());
     }
     @Test
